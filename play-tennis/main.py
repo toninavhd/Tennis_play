@@ -23,6 +23,7 @@ def run(points: str) -> str:
             A_points = 0
             B_points = 0
 
+# lo del B - A >= 2 es por si hay tail break y eso
 
 
 
