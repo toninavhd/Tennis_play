@@ -12,7 +12,6 @@ def run(points: str) -> str:
             A_points += 1
         else:
             B_points += 1
-
 # Aqui se van contando los juegos antes de que sea el fin del partido 
 
         if A_points >= 4 and A_points - B_points >= 2:
