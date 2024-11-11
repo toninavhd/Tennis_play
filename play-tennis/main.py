@@ -32,12 +32,12 @@ def run(points: str) -> str:
                  
         if game_a >= 6 and game_a - game_b >= 2:
             set_A += 1
-            result += f'{game_a}-{game_b} '
+            result += f'{game_a}-{game_b}'
             game_a = 0
             game_b = 0
         elif game_b >= 6 and game_b - game_a >= 2:
             set_B += 1
-            result += f'{game_a}-{game_b} '
+            result += f'{game_a}-{game_b}'
             game_a = 0
             game_b = 0
 
@@ -45,7 +45,7 @@ def run(points: str) -> str:
     if game_a > 0 or game_b > 0:
         result += f'{game_a}-{game_b}'
 
-    return result.strip()
+    return result
 
 # DO NOT TOUCH THE CODE BELOW
 if __name__ == '__main__':
