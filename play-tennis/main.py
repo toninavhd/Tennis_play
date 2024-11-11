@@ -1,4 +1,6 @@
 def run(points: str) -> str:
+    # Poner constantes en vez de números.
+
     game_a = 0
     game_b = 0
     set_A = 0
