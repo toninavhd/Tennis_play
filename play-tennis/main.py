@@ -1,5 +1,5 @@
 def run(points: str) -> str:
-    # Poner constantes en vez de números.
+    # Poner constantes para los números.
 
     game_a = 0
     game_b = 0
