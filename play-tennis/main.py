@@ -1,4 +1,6 @@
 def run(points: str) -> str:
+# Pista de Sergio: Los tail breaks (cuando se llega a 7) son un juego nuevo
+# Cambiar los numeros del código por constantes
     game_a = 0
     game_b = 0
     set_A = 0
@@ -6,6 +8,8 @@ def run(points: str) -> str:
     points_a = 0
     points_b = 0
     result = ''
+    
+    # Aqui abajo se cuentan los puntos
 
     for point in points:
         if point == 'A':
@@ -13,7 +17,8 @@ def run(points: str) -> str:
         else:
             points_b += 1
 
-        
+    # aqui se cuentan los juegos (game_a y game_b)
+
         if points_a >= 4 and points_a - points_b >= 2:
             game_a += 1
             points_a = 0
@@ -22,8 +27,9 @@ def run(points: str) -> str:
             game_b += 1
             points_a = 0
             points_b = 0
-
-        
+       
+    # aqui los sets(set_A y set_B)
+                 
         if game_a >= 6 and game_a - game_b >= 2:
             set_A += 1
             result += f'{game_a}-{game_b} '
