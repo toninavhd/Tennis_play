@@ -25,6 +25,8 @@ def run(points: str) -> str:
             points_a = 0
             points_b = 0
 
+    # pista de Sergio: tailbreak es como un juego nuevo
+
     return result
 
 
