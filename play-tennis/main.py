@@ -26,6 +26,16 @@ def run(points: str) -> str:
             points_b = 0
 
     # pista de Sergio: tailbreak es como un juego nuevo
+        if game_a >= 6 and game_a - game_b >= 2:
+            set_A += 1
+            result += f'{game_a} - {game_b}'
+            set_A = 0
+            set_B = 0
+        elif game_b >= 6 and game_b - game_a >= 2:
+            set_B += 1
+            result += f'{game_a} - {game_b}'
+            set_A = 0
+            set_B = 0
 
     return result
 
