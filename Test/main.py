@@ -1,51 +1,73 @@
 def run(points: str) -> str:
-    A_points = 0
-    B_points = 0
-    game_A = 0
-    game_B = 0
+    GAME_WIN_POINTS = 4
+    SET_WIN_GAMES = 6
+    TIEBREAK_WIN = 7
+
+    game_a = 0
+    game_b = 0
     set_A = 0
     set_B = 0
-    result= ''
-    point_index = 0
-    for point in points:
-        if point == 'A':
-            if A_points == 30:
-                A_points += 10
-            else:
-                A_points += 15
-        else:
-            if B_points == 30:
-                B_points += 10
-            else:
-                B_points += 15
-                
-        if A_points == 40 and B_points < 40:
-                game_A += 1
-                A_points = 0
-                B_points = 0
-                point_index += 1
-        elif B_points == 40 and A_points < 40:
-                game_B += 1
-                A_points = 0
-                B_points = 0
-                point_index += 1
-        elif A_points == 40 and B_points == 40:
-            if point_index + 1 < len(points):
-                if points[point_index + 1] == 'A' and points[point_index + 2] == 'A':
-                    game_A += 1
-                    A_points = 0
-                    B_points = 0
-                elif points[point_index + 1] == 'B' and points[point_index + 2] == 'B':
-                    game_B += 1
-                    A_points = 0
-                    B_points = 0
-                    
-        point_index += 1
-        
-    # Faltan contar sets y algunas cosas mas
-             
-    return result
+    points_a = 0
+    points_b = 0
+    result = ''
+    tiebreak = False
 
+    for point in points:
+        
+        if tiebreak:
+            if point == 'A':
+                points_a += 1
+            else:
+                points_b += 1
+
+            if points_a == TIEBREAK_WIN:
+                set_A += 1
+                result += f'{points_a}-{points_b} '
+                game_a = 0
+                game_b = 0
+                points_a = 0
+                points_b = 0
+                tiebreak = False
+            elif points_b == TIEBREAK_WIN:
+                set_B += 1
+                result += f'{points_a}-{points_b} '
+                game_a = 0
+                game_b = 0
+                points_a = 0
+                points_b = 0
+                tiebreak = False
+                
+        else:
+            if point == 'A':
+                points_a += 1
+            else:
+                points_b += 1
+
+            if points_a >= GAME_WIN_POINTS and points_a - points_b >= 2:
+                game_a += 1
+                points_a = 0
+                points_b = 0
+            elif points_b >= GAME_WIN_POINTS and points_b - points_a >= 2:
+                game_b += 1
+                points_a = 0
+                points_b = 0
+
+            if game_a >= SET_WIN_GAMES and game_a - game_b >= 2:
+                set_A += 1
+                result += f'{game_a}-{game_b} '
+                game_a = 0
+                game_b = 0
+            elif game_b >= SET_WIN_GAMES and game_b - game_a >= 2:
+                set_B += 1
+                result += f'{game_a}-{game_b} '
+                game_a = 0
+                game_b = 0
+
+            if game_a == SET_WIN_GAMES and game_b == SET_WIN_GAMES:
+                tiebreak = True
+                
+    result = result.strip()
+    return result
 
 # DO NOT TOUCH THE CODE BELOW
 if __name__ == '__main__':
