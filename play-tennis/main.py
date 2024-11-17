@@ -54,7 +54,7 @@ def run(points: str) -> str:
                 points_a = 0
                 points_b = 0
                 tiebreak = False
-            elif points_b >= TIEBREAK_WIN and points_b - points_a >= 2:
+        elif points_b >= TIEBREAK_WIN and points_b - points_a >= 2:
                 set_b += 1
                 result += f'{game_a}-{game_b} '
                 game_a = 0
