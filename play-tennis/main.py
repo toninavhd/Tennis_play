@@ -46,26 +46,22 @@ def run(points: str) -> str:
             game_b = 0
 
     # Tiebreak (Esto no va pero no se me ocurre nada mas)
-        if game_a == SET_WIN_GAMES and game_b == SET_WIN_GAMES:
-            points_a = 0
-            points_b = 0
-
-            for point in points[points.index(point):]:
-                if point == 'A':
-                    points_a += 1
-                else:
-                    points_b += 1
-                
-                if points_a >= TIEBREAK_WIN and points_a - points_b >= 2:
-                    points_a += 1
-                    result += f'{game_a}-{game_b} '
-                    break
-                elif points_b >= TIEBREAK_WIN and points_b - points_a >= 2:
-                    points_b += 1
-                    result += f'{game_a}-{game_b} '
-            game_a = 0
-            game_b = 0
-            break
+        if points_a >= TIEBREAK_WIN and points_a - points_b >= 2:
+                set_a += 1
+                result += f'{game_a}-{game_b} '
+                game_a = 0
+                game_b = 0
+                points_a = 0
+                points_b = 0
+                tiebreak = False
+            elif points_b >= TIEBREAK_WIN and points_b - points_a >= 2:
+                set_b += 1
+                result += f'{game_a}-{game_b} '
+                game_a = 0
+                game_b = 0
+                points_a = 0
+                points_b = 0
+                tiebreak = False
 
         
     if game_a > 0 or game_b > 0:
