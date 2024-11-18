@@ -66,7 +66,6 @@ def run(points: str) -> str:
             if game_a == SET_WIN_GAMES and game_b == SET_WIN_GAMES:
                 tiebreak = True
                 
-    result = result.strip()
     return result
 
 # DO NOT TOUCH THE CODE BELOW
